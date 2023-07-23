@@ -15,7 +15,8 @@ class HobbyController extends Controller
      */
     public function index()
     {
-        //
+        $hobbies = Hobby::all();
+        return view("hobby.index", ["hobbies" => $hobbies]);
     }
 
     /**
@@ -25,7 +26,7 @@ class HobbyController extends Controller
      */
     public function create()
     {
-        //
+        return view("hobby.create");
     }
 
     /**
@@ -36,7 +37,12 @@ class HobbyController extends Controller
      */
     public function store(StoreHobbyRequest $request)
     {
-        //
+        $hobbies = Hobby::create([
+            "name" => $request->name,
+            "description" => $request->description
+        ]);
+
+        return redirect('/hobby');
     }
 
     /**

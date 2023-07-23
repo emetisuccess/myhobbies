@@ -38,6 +38,8 @@
                         <li><a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Start</a>
                         </li>
                         <li><a href="/info" class="nav-link {{ Request::is('info') ? 'active' : '' }}">Info</a></li>
+                        <li><a href="/hobby" class="nav-link {{ Request::is('hobby*') ? 'active' : '' }}">Hobbies</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

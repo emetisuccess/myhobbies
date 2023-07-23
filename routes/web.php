@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HobbyController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,9 @@ Route::get('/info', function () {
 });
 
 Auth::routes();
+
+// Route::get("/test/{name}/foo/{age}", [HobbyController::class, "index"]);
+
+Route::resource("/hobby", HobbyController::class);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
