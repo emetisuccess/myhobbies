@@ -5,8 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-11">
                 <div class="card">
-                    <div class="card-header">{{ __('All the Hobbies') }}</div>
-
+                    <div class="card-header">{{ __('All the Hobbies') }}
+                        @if (session('success'))
+                            <span class="text-success">{{ session('success') }}</span>
+                        @endif
+                    </div>
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach ($hobbies as $hobby)

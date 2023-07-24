@@ -42,7 +42,7 @@ class HobbyController extends Controller
             "description" => $request->description
         ]);
 
-        return redirect('/hobby');
+        return redirect('/hobby')->with(['success' => "New Hobby " . $hobbies->name . " was created"]);
     }
 
     /**

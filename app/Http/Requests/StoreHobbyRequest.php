@@ -24,8 +24,8 @@ class StoreHobbyRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => ["required", "string"],
-            "description" => ["required"]
+            "name" => ["required", "min:3"],
+            "description" => ["required", "min:10"]
         ];
     }
 }
