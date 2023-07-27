@@ -53,7 +53,7 @@ class HobbyController extends Controller
      */
     public function show(Hobby $hobby)
     {
-        //
+        return view("hobby.show", ["hobby" => $hobby]);
     }
 
     /**
@@ -64,7 +64,7 @@ class HobbyController extends Controller
      */
     public function edit(Hobby $hobby)
     {
-        //
+        return view("hobby.edit", ["hobby" => $hobby]);
     }
 
     /**
@@ -76,7 +76,12 @@ class HobbyController extends Controller
      */
     public function update(UpdateHobbyRequest $request, Hobby $hobby)
     {
-        //
+        $hobby = Hobby::where("id", $hobby->id)->update([
+            "name" => $request->name,
+            "description" => $request->description
+        ]);
+
+        return redirect("/hobby")->with("success", "Hobby " . $request->name . " was updated");
     }
 
     /**
@@ -87,6 +92,7 @@ class HobbyController extends Controller
      */
     public function destroy(Hobby $hobby)
     {
-        //
+        Hobby::where("id", $hobby->id)->delete();
+        return redirect()->back()->with("success", "Hobby " . $hobby->name . " was Deleted!");
     }
 }

@@ -13,7 +13,22 @@
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach ($hobbies as $hobby)
-                                <li class="list-group-item">{{ $hobby->name }}</li>
+                                <li class="list-group-item">
+                                    <a href="/hobby/{{ $hobby->id }}" class="text-decoration-none">{{ $hobby->name }}
+                                    </a>
+                                    <form action="{{ route('hobby.destroy', $hobby->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="/hobby/{{ $hobby->id }}/edit" class="btn btn-primary btn-sm mx-1 my-1"
+                                            style="float: right"><i class="fas fa-edit"></i>
+                                            Edit</a>
+
+                                        <input type="submit" class="btn btn-danger btn-sm mx-1 my-1" value="Delete"
+                                            style="float: right">
+
+                                    </form>
+
+                                </li>
                             @endforeach
                         </ul>
                     </div>
