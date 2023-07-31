@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view("tag.create");
     }
 
     /**
@@ -37,7 +37,12 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        //
+        Tag::create([
+            "name" => $request->name,
+            "style" => $request->style
+        ]);
+
+        return redirect()->route("tag.index")->with("success", "New Tag " . $request->name . " created");
     }
 
     /**
@@ -59,7 +64,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view("tag.edit", ["tag" => $tag]);
     }
 
     /**
@@ -69,9 +74,16 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
+
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        // A  
+        $tag->update([
+            "name" => $request['name'],
+            "style" => $request['style']
+        ]);
+
+        return redirect()->route("tag.index")->with("success", "Tag was updated");
     }
 
     /**
@@ -82,6 +94,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return redirect()->back()->with("success", "Tag was Deleted");
     }
 }
