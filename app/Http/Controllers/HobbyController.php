@@ -8,6 +8,12 @@ use App\Http\Requests\UpdateHobbyRequest;
 
 class HobbyController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware("auth")->except(["index", "show"]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,8 @@ class HobbyController extends Controller
      */
     public function index()
     {
-        $hobbies = Hobby::all();
+
+        $hobbies = Hobby::orderBy("created_at", "desc")->paginate(10);
         return view("hobby.index", ["hobbies" => $hobbies]);
     }
 
@@ -39,7 +46,8 @@ class HobbyController extends Controller
     {
         $hobbies = Hobby::create([
             "name" => $request->name,
-            "description" => $request->description
+            "description" => $request->description,
+            "user_id" => auth()->id()
         ]);
 
         return redirect('/hobby')->with(['success' => "New Hobby " . $hobbies->name . " was created"]);
