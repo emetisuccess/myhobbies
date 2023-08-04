@@ -49,7 +49,6 @@ class HobbyController extends Controller
             "description" => $request->description,
             "user_id" => auth()->id()
         ]);
-
         return redirect('/hobby')->with(['success' => "New Hobby " . $hobbies->name . " was created"]);
     }
 
@@ -91,6 +90,7 @@ class HobbyController extends Controller
 
         return redirect("/hobby")->with("success", "Hobby " . $request->name . " was updated");
     }
+
 
     /**
      * Remove the specified resource from storage.

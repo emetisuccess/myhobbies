@@ -24,7 +24,8 @@
 											Edit
 										</a>
 									@endauth
-									<span class="mx-2">Posted by: {{ $hobby->user->name }}( {{ $hobby->user->hobbies->count() }} Hobbies)</span>
+									<span class="mx-2">Posted by: <a href="/user/{{ $hobby->user->id }}">{{ $hobby->user->name }}(
+											{{ $hobby->user->hobbies->count() }} Hobbies)</a> </span>
 									@auth
 										<form action="{{ route('hobby.destroy', $hobby->id) }}"
 											method="POST"
@@ -37,6 +38,12 @@
 										</form>
 									@endauth
 									<span style="float: right">{{ $hobby->created_at->diffForHumans() }}</span>
+									<br>
+									@foreach ($hobby->tags as $tag)
+										<a href="#"><span
+												class="badge mx-1 {{ $tag->style == 'light' ? 'text-dark' : '' }} bg-{{ $tag->style }}">{{ $tag->name }}</span></a>
+									@endforeach
+
 								</li>
 							@endforeach
 						</ul>
