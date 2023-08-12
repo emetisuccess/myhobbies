@@ -50,7 +50,8 @@ class HobbyController extends Controller
             "description" => $request->description,
             "user_id" => auth()->id()
         ]);
-        return redirect('/hobby')->with(['success' => "New Hobby " . $hobbies->name . " was created"]);
+
+        return redirect()->route("hobby.show", $hobbies->id)->with(['success' => "New Hobby " . $hobbies->name . " was created, Add tags"]);
     }
 
     /**

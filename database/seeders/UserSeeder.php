@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        dd("yes ooooo");
         User::factory(100)->create()
             ->each(function ($user) {
 

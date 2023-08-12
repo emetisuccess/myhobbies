@@ -45,14 +45,29 @@
 					id="navbarSupportedContent">
 					<!-- Left Side Of Navbar -->
 					<ul class="navbar-nav me-auto">
-						<li><a href="/"
-								class="nav-link {{ Request::is('/') ? 'active' : '' }}">Start</a>
+						@auth
+							<li>
+								<a href="/home"
+									class="nav-link {{ Request::is('home') ? 'active' : '' }}">Home
+								</a>
+							</li>
+						@endauth
+						@guest
+							<li>
+								<a href="/"
+									class="nav-link {{ Request::is('/') ? 'active' : '' }}">Start
+								</a>
+							</li>
+						@endguest
+						<li>
+							<a href="/info"
+								class="nav-link {{ Request::is('info') ? 'active' : '' }}">Info
+							</a>
 						</li>
-						<li><a href="/info"
-								class="nav-link {{ Request::is('info') ? 'active' : '' }}">Info</a></li>
 						<li>
 							<a href="/hobby"
-								class="nav-link {{ Request::is('hobby*') ? 'active' : '' }}">Hobbies</a>
+								class="nav-link {{ Request::is('hobby*') ? 'active' : '' }}">Hobbies
+							</a>
 						</li>
 						<li><a href="/tag"
 								class="nav-link {{ Request::is('tag*') ? 'active' : '' }}">Tags</a>
