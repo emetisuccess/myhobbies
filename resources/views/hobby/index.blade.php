@@ -24,7 +24,11 @@
 							@foreach ($hobbies as $hobby)
 								<li class="list-group-item">
 									<a class="text-decoration-none"
-										href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}
+										href="/hobby/{{ $hobby->id }}">
+										<img src="{{ asset('img/download.jpeg') }}"
+											width="50"
+											alt="">
+										{{ $hobby->name }}
 									</a>
 									@auth
 										<a class="btn btn-outline-primary btn-sm mx-1 my-1 border-0"
@@ -37,7 +41,11 @@
 										<a href="/user/{{ $hobby->user->id }}">
 											{{ $hobby->user->name }}(
 											{{ $hobby->user->hobbies->count() }}
-											Hobbies)</a>
+											Hobbies)
+											<img src="{{ asset('img/istockphoto-152967792-612x612.jpg') }}"
+												width="50"
+												alt="">
+										</a>
 									</span>
 									@auth
 										<form action="{{ route('hobby.destroy', $hobby->id) }}"
@@ -53,8 +61,7 @@
 										{{ $hobby->created_at->diffForHumans() }}</span>
 									<br />
 									@foreach ($hobby->tags as $tag)
-										<a href="/hobby/tag/{{ $tag->id }}"><span
-												class="badge mx-1 
+										<a href="/hobby/tag/{{ $tag->id }}"><span class="badge mx-1 
 												{{ $tag->style == 'light' ? 'text-dark' : '' }}
 												 bg-{{ $tag->style }}">{{ $tag->name }}</span></a>
 									@endforeach

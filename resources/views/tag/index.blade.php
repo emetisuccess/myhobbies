@@ -14,10 +14,10 @@
 						<ul class="my-2 list-group">
 							@foreach ($tags as $tag)
 								<li class="list-group-item ">
-									<span style="float: left; font-size:100%;"
-										class="badge me-2 text-decoration-none bg-{{ $tag->style }}">{{ $tag->name }}</span>
-									<a href="tag/{{ $tag->id }}/edit"
-										class="btn btn-outline-primary btn-sm p-1 text-decoration-none mx-1 my-1 "><i class="fas fa-edit"></i>
+									<span class="badge me-2 text-decoration-none bg-{{ $tag->style }}"
+										style="float: left; font-size:100%;">{{ $tag->name }}</span>
+									<a class="btn btn-outline-primary btn-sm p-1 text-decoration-none mx-1 my-1 "
+										href="tag/{{ $tag->id }}/edit"><i class="fas fa-edit"></i>
 										Edit</a>
 									<form action="/tag/{{ $tag->id }}"
 										method="post"
@@ -25,21 +25,22 @@
 
 										@csrf
 										@method('Delete')
-										<input type="submit"
-											class="btn btn-sm btn-outline-danger p-1"
+										<input class="btn btn-sm btn-outline-danger p-1"
+											type="submit"
 											value="Delete">
 									</form>
-									<a href="/hobby/tag/{{ $tag->id }}"
-										style="float: right"
-										class="text-decoration-none">Used {{ $tag->hobbies->count() }} times</a>
+									<a class="text-decoration-none"
+										href="/hobby/tag/{{ $tag->id }}"
+										style="float: right">Used
+										{{ $tag->hobbies->count() }} times</a>
 								</li>
 							@endforeach
 						</ul>
 					</div>
 				</div>
 				<div class="mt-2">
-					<a href="/tag/create"
-						class="btn btn-success btn-sm"><i class="fas fa-plus-circle"></i> Create new
+					<a class="btn btn-success btn-sm"
+						href="/tag/create"><i class="fas fa-plus-circle"></i> Create new
 						Tag</a>
 				</div>
 			</div>

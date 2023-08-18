@@ -8,6 +8,10 @@
 					<div class="card-header"
 						style="font-size: 150%">{{ $user->name }}</div>
 					<div class="card-body">
+						<img src="{{ asset('img/istockphoto-152967792-612x612.jpg') }}"
+							width="100"
+							style="float: right"
+							alt="">
 						<b>My Motto: <br>{{ $user->motto }}</b>
 						<p class="my-3">
 							<b>About Me:</b> <br> {{ $user->about_me }}
@@ -19,14 +23,17 @@
 									@foreach ($user->hobbies as $hobby)
 										<li class="list-group-item">
 											<a class="text-decoration-none"
-												href="/hobby/{{ $hobby->id }}">{{ $hobby->name }}
+												href="/hobby/{{ $hobby->id }}">
+												<img src="{{ asset('img/download.jpeg') }}"
+													width="50"
+													alt="">
+												{{ $hobby->name }}
 											</a>
 											<span style="float: right">
 												{{ $hobby->created_at->diffForHumans() }}</span>
 											<br />
 											@foreach ($hobby->tags as $tag)
-												<a href="/hobby/tag/{{ $tag->id }}"><span
-														class="badge mx-1 
+												<a href="/hobby/tag/{{ $tag->id }}"><span class="badge mx-1 
 												{{ $tag->style == 'light' ? 'text-dark' : '' }}
 												 bg-{{ $tag->style }}">{{ $tag->name }}</span></a>
 											@endforeach

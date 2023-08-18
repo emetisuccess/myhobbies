@@ -12,6 +12,10 @@
 						</span>
 					</div>
 					<div class="card-body">
+						<img src="{{ asset('img/download.jpeg') }}"
+							width="200"
+							style="float: right"
+							alt="">
 						<b>{{ $hobby->name }}</b>
 						<p>
 							{{ $hobby->description }}
@@ -20,8 +24,7 @@
 							<b>Used Tags:</b>(Click to Remove!)
 							<p>
 								@foreach ($hobby->tags as $tag)
-									<a href="/hobby/{{ $hobby->id }}/tag/{{ $tag->id }}/detach"><span
-											class="badge mx-1 {{ $tag->style == 'light' ? 'text-dark' : '' }} bg-{{ $tag->style }}">{{ $tag->name }}
+									<a href="/hobby/{{ $hobby->id }}/tag/{{ $tag->id }}/detach"><span class="badge mx-1 {{ $tag->style == 'light' ? 'text-dark' : '' }} bg-{{ $tag->style }}">{{ $tag->name }}
 										</span></a>
 								@endforeach
 							</p>
@@ -30,8 +33,7 @@
 							<b>Available Tags:</b>(Click to Add!)
 							<p>
 								@foreach ($availableTags as $tag)
-									<a href="/hobby/{{ $hobby->id }}/tag/{{ $tag->id }}/attach"><span
-											class="badge mx-1 {{ $tag->style == 'light' ? 'text-dark' : '' }} bg-{{ $tag->style }}">{{ $tag->name }}</span></a>
+									<a href="/hobby/{{ $hobby->id }}/tag/{{ $tag->id }}/attach"><span class="badge mx-1 {{ $tag->style == 'light' ? 'text-dark' : '' }} bg-{{ $tag->style }}">{{ $tag->name }}</span></a>
 								@endforeach
 							</p>
 						@endif
